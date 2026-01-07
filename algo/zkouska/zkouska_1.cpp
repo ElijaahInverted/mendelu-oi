@@ -9,14 +9,14 @@
 int main(int argc, char* argv[]) {
     // zkontroluj podminku
     if (argc < 2) {
-        std::cout << "not enough parameters" << "\n";
+        std::cerr << "not enough parameters" << "\n";
         return -1;
     }
 
     std::ifstream file(argv[1]);
     
     if (!file.is_open()) {
-        std::cout << "file could not be opened" << "\n";
+        std::cerr << "file could not be opened" << "\n";
         return -1;
     }
 
