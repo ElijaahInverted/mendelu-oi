@@ -1,0 +1,158 @@
+##1##
+SELECT v.text
+FROM osoby o
+JOIN vypujcky vyp ON o.osoby_id = vyp.osoby_id
+JOIN exemplare e ON vyp.exemplare_id = e.exemplare_id
+JOIN klicova_slova ks ON e.knihy_id = ks.knihy_id
+JOIN vyrazy v ON ks.vyrazy_id = v.vyrazy_id
+WHERE o.login = 'navraj0'
+GROUP BY v.vyrazy_id, v.text
+ORDER BY COUNT(e.exemplare_id) DESC, v.text ASC
+LIMIT 1;
+
+##2##
+SELECT v.text
+FROM oddeleni o
+JOIN exemplare e ON o.oddeleni_id = e.oddeleni_id
+JOIN klicova_slova ks ON e.knihy_id = ks.knihy_id
+JOIN vyrazy v ON ks.vyrazy_id = v.vyrazy_id
+WHERE o.nazev = 'Vývoj logistických systémů'
+GROUP BY v.vyrazy_id, v.text
+ORDER BY COUNT(e.exemplare_id) DESC, v.text DESC
+LIMIT 1 OFFSET 1;
+
+##3##
+SELECT COUNT(v.vypujcky_id)
+FROM vypujcky v
+JOIN exemplare e ON v.exemplare_id = e.exemplare_id
+JOIN klicova_slova ks ON e.knihy_id = ks.knihy_id
+WHERE ks.vyrazy_id = (
+SELECT ks2.vyrazy_id
+FROM vypujcky v2
+JOIN exemplare e2 ON v2.exemplare_id = e2.exemplare_id
+JOIN klicova_slova ks2 ON e2.knihy_id = ks2.knihy_id
+GROUP BY ks2.vyrazy_id
+ORDER BY COUNT(v2.vypujcky_id) DESC
+LIMIT 1
+);
+
+##4##
+SELECT COUNT(DISTINCT ks.vyrazy_id)
+FROM knihy k
+JOIN jazyky j ON k.jazyky_id = j.jazyky_id
+JOIN klicova_slova ks ON k.knihy_id = ks.knihy_id
+WHERE LOWER(j.nazev) != 'čeština';
+
+##5##
+SELECT k.nazev
+FROM oddeleni o
+JOIN exemplare e ON o.oddeleni_id = e.oddeleni_id
+JOIN vypujcky v ON e.exemplare_id = v.exemplare_id
+JOIN knihy k ON e.knihy_id = k.knihy_id
+WHERE o.nazev = 'Správa elektrotechnických zařízení'
+GROUP BY k.knihy_id, k.nazev
+ORDER BY COUNT(v.vypujcky_id) DESC, k.nazev DESC
+LIMIT 1;
+
+##6##
+SELECT COUNT(DISTINCT v.osoby_id)
+FROM vypujcky v
+JOIN exemplare e ON v.exemplare_id = e.exemplare_id
+JOIN oddeleni o ON e.oddeleni_id = o.oddeleni_id
+JOIN knihy k ON e.knihy_id = k.knihy_id
+WHERE o.nazev = 'Ústav měřicích systémů'
+AND LOWER(k.nazev) LIKE 'i%';
+
+##7##
+SELECT COUNT(DISTINCT osoby_id)
+FROM (
+SELECT v.osoby_id
+FROM vypujcky v
+JOIN exemplare e_pujceny ON v.exemplare_id = e_pujceny.exemplare_id
+JOIN exemplare e_vlastni ON e_pujceny.knihy_id = e_vlastni.knihy_id
+AND e_vlastni.osoby_id = v.osoby_id
+WHERE e_pujceny.exemplare_id != e_vlastni.exemplare_id
+GROUP BY v.osoby_id, e_pujceny.knihy_id
+HAVING COUNT(v.vypujcky_id) >= 2
+) poddotaz;
+
+##8##
+SELECT COUNT(*)
+FROM (
+SELECT osoby_id, COUNT(vypujcky_id) as pocet
+FROM vypujcky
+GROUP BY osoby_id
+) pocty
+WHERE pocet > (
+SELECT CAST(COUNT(vypujcky_id) AS FLOAT) / COUNT(DISTINCT osoby_id)
+FROM vypujcky
+);
+
+##9##
+SELECT COUNT(*)
+FROM knihy
+WHERE vydani IS NULL;
+
+##10##
+SELECT ROUND(AVG(CAST(pocet_stran AS FLOAT)), 2)
+FROM knihy
+WHERE pocet_stran IS NOT NULL;
+
+##11##
+SELECT nazev
+FROM knihy
+ORDER BY LENGTH(nazev) ASC, nazev ASC
+LIMIT 1;
+
+##12##
+SELECT ROUND((SUM(CASE WHEN autor IS NULL THEN 1 ELSE 0 END) * 100.0) / COUNT(*), 2)
+FROM knihy;
+
+##13##
+SELECT ROUND((COUNT(edice) * 100.0) / COUNT(*), 3)
+FROM knihy;
+
+##14##
+SELECT nazev
+FROM knihy
+WHERE edice IS NOT NULL
+AND LENGTH(isbn) > 18
+AND LOWER(misto_vydani) LIKE '%z%'
+ORDER BY pocet_stran DESC, knihy_id ASC
+LIMIT 1;
+
+##15##
+SELECT COUNT(e.exemplare_id)
+FROM exemplare e
+JOIN knihy k ON e.knihy_id = k.knihy_id
+WHERE k.pocet_stran > (
+SELECT AVG(k2.pocet_stran)
+FROM exemplare e2
+JOIN knihy k2 ON e2.knihy_id = k2.knihy_id
+WHERE e2.oddeleni_id = e.oddeleni_id
+);
+
+##16##
+SELECT COUNT(*)
+FROM vypujcky
+WHERE skutecne_vraceno > vratit_do;
+
+##17##
+SELECT UPPER(o.jmeno) || ', ' || LOWER(o.prijmeni)
+FROM osoby o
+JOIN vypujcky v ON o.osoby_id = v.osoby_id
+WHERE v.skutecne_vraceno > v.vratit_do
+GROUP BY o.osoby_id, o.jmeno, o.prijmeni
+ORDER BY COUNT(v.vypujcky_id) DESC, o.osoby_id ASC
+LIMIT 1;
+
+##18##
+SELECT v.text
+FROM oddeleni o
+JOIN exemplare e ON o.oddeleni_id = e.oddeleni_id
+JOIN klicova_slova ks ON e.knihy_id = ks.knihy_id
+JOIN vyrazy v ON ks.vyrazy_id = v.vyrazy_id
+WHERE o.nazev = 'Vývoj logistických systémů'
+GROUP BY v.vyrazy_id, v.text
+ORDER BY COUNT(e.exemplare_id) DESC, v.text ASC
+LIMIT 1;

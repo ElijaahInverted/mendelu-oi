@@ -1,0 +1,1 @@
+nl uzivatele.txt | tail -n -10 uzivatele.txt
