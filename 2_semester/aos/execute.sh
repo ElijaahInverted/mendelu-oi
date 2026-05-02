@@ -1,9 +1,8 @@
 #!/bin/bash
-for x in "$@"
-do
-    if [ -e "$x" ]; then
-        file "$x";
+for f in "$@"; do
+    if [ -e "$f" ]; then
+        echo "Soubor existuje: $(file "$f")"
     else
-        echo "File $x is missing.";
+        echo "Soubor neexistuje: $f"
     fi
 done
