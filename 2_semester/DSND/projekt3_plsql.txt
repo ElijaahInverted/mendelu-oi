@@ -1,0 +1,296 @@
+##1##
+
+CREATE OR REPLACE PROCEDURE pivovary_v_kraji(p_kraj IN VARCHAR2) AS
+
+  CURSOR c_obce IS
+    SELECT o.id_obce,
+           o.nazev                         AS nazev_obce,
+           COUNT(DISTINCT piv.id_pivovaru) AS pocet_pivovaru
+    FROM obce o
+    JOIN kraje k             ON o.id_kraje = k.id_kraje
+    JOIN smerovaci_cisla sc  ON sc.id_obce  = o.id_obce
+    JOIN adresy a            ON a.psc       = sc.psc
+    JOIN pivovary piv        ON piv.id_adresy = a.id_adresy
+    WHERE k.nazev = p_kraj
+    GROUP BY o.id_obce, o.nazev;
+
+  CURSOR c_pivovary(p_id_obce IN NUMBER) IS
+    SELECT piv.nazev               AS nazev_pivovaru,
+           COUNT(DISTINCT p.id_piva) AS pocet_piv
+    FROM pivovary piv
+    JOIN adresy a           ON piv.id_adresy = a.id_adresy
+    JOIN smerovaci_cisla sc ON a.psc          = sc.psc
+    LEFT JOIN piva p        ON p.id_pivovaru  = piv.id_pivovaru
+    WHERE sc.id_obce = p_id_obce
+    GROUP BY piv.id_pivovaru, piv.nazev;
+
+BEGIN
+  FOR r_obec IN c_obce LOOP
+    DBMS_OUTPUT.PUT_LINE(r_obec.nazev_obce || ' (' || r_obec.pocet_pivovaru || ')');
+    DBMS_OUTPUT.PUT_LINE('------------------------------------------');
+    FOR r_piv IN c_pivovary(r_obec.id_obce) LOOP
+      DBMS_OUTPUT.PUT_LINE(r_piv.nazev_pivovaru || ': ' || r_piv.pocet_piv);
+    END LOOP;
+  END LOOP;
+END pivovary_v_kraji;
+/
+
+##2##
+
+CREATE OR REPLACE PROCEDURE info_restaurace(p_id IN NUMBER) AS
+
+  v_nazev      restaurace.nazev%TYPE;
+  v_obec       obce.nazev%TYPE;
+  v_cis_pop    adresy.cislo_popisne%TYPE;
+  v_psc        adresy.psc%TYPE;
+  v_kraj       kraje.nazev%TYPE;
+  v_id_obce    obce.id_obce%TYPE;
+  v_konkurenti NUMBER;
+  v_obaly      NUMBER;
+  v_objem      NUMBER;
+  v_pivovary   VARCHAR2(4000) := '';
+  v_header     VARCHAR2(4000);
+  v_sep        VARCHAR2(4000);
+
+  CURSOR c_pivovary IS
+    SELECT DISTINCT piv.nazev
+    FROM vystav v
+    JOIN piva p     ON v.id_piva       = p.id_piva
+    JOIN pivovary piv ON p.id_pivovaru = piv.id_pivovaru
+    WHERE v.id_restaurace = p_id
+    ORDER BY piv.nazev;
+
+  ex_not_found EXCEPTION;
+
+BEGIN
+  BEGIN
+    SELECT r.nazev, o.nazev, a.cislo_popisne, a.psc, k.nazev, o.id_obce
+    INTO v_nazev, v_obec, v_cis_pop, v_psc, v_kraj, v_id_obce
+    FROM restaurace r
+    JOIN adresy a          ON r.id_adresy  = a.id_adresy
+    JOIN smerovaci_cisla sc ON a.psc       = sc.psc
+    JOIN obce o            ON sc.id_obce   = o.id_obce
+    JOIN kraje k           ON o.id_kraje   = k.id_kraje
+    WHERE r.id_restaurace = p_id;
+  EXCEPTION
+    WHEN NO_DATA_FOUND THEN RAISE ex_not_found;
+  END;
+
+  SELECT COUNT(*) - 1 INTO v_konkurenti
+  FROM restaurace r2
+  JOIN adresy a2          ON r2.id_adresy = a2.id_adresy
+  JOIN smerovaci_cisla sc2 ON a2.psc      = sc2.psc
+  WHERE sc2.id_obce = v_id_obce;
+
+  SELECT COUNT(DISTINCT v.id_typu_obalu) INTO v_obaly
+  FROM vystav v
+  WHERE v.id_restaurace = p_id;
+
+  SELECT NVL(SUM(v.pocet_kusu * t.objem_v_litrech), 0) INTO v_objem
+  FROM vystav v
+  JOIN typy_obalu t ON v.id_typu_obalu = t.id_typu_obalu
+  WHERE v.id_restaurace = p_id
+    AND LOWER(t.nazev) LIKE '%sud%';
+
+  FOR r_piv IN c_pivovary LOOP
+    IF LENGTH(v_pivovary) > 0 THEN
+      v_pivovary := v_pivovary || ', ';
+    END IF;
+    v_pivovary := v_pivovary || r_piv.nazev;
+  END LOOP;
+
+  v_header := UPPER(v_nazev)
+              || ' ('  || v_obec
+              || ', '  || v_cis_pop
+              || ', '  || v_psc
+              || ', '  || v_kraj || ')';
+  v_sep := RPAD('+', LENGTH(v_header), '+');
+
+  DBMS_OUTPUT.PUT_LINE(v_header);
+  DBMS_OUTPUT.PUT_LINE(v_sep);
+  DBMS_OUTPUT.PUT_LINE('* počet konkurentů: '    || v_konkurenti);
+  DBMS_OUTPUT.PUT_LINE('* počet různých obalů: ' || v_obaly);
+  DBMS_OUTPUT.PUT_LINE('* objem piva v sudech: '  || v_objem);
+  DBMS_OUTPUT.PUT_LINE('* pivovary: '             || v_pivovary);
+
+EXCEPTION
+  WHEN ex_not_found THEN
+    DBMS_OUTPUT.PUT_LINE('Restaurace s id ' || p_id || ' nebyla nalezena.');
+END info_restaurace;
+/
+
+##3##
+
+CREATE OR REPLACE PROCEDURE uprav_pivo(
+  p_id      IN NUMBER,
+  p_sloupec IN VARCHAR2,
+  p_hodnota IN VARCHAR2
+) AS
+  v_count   NUMBER;
+  v_col_cnt NUMBER;
+BEGIN
+  SELECT COUNT(*) INTO v_count FROM piva WHERE id_piva = p_id;
+  IF v_count = 0 THEN
+    RAISE_APPLICATION_ERROR(-20002, 'Pivo s tímto id neexistuje');
+  END IF;
+
+  SELECT COUNT(*) INTO v_col_cnt
+  FROM user_tab_columns
+  WHERE table_name  = 'PIVA'
+    AND column_name = UPPER(p_sloupec);
+
+  IF v_col_cnt = 0 THEN
+    DBMS_OUTPUT.PUT_LINE('Takovýto sloupec neexistuje');
+    DBMS_OUTPUT.PUT_LINE('Dostupné sloupce:');
+    FOR r IN (
+      SELECT column_name
+      FROM user_tab_columns
+      WHERE table_name = 'PIVA'
+      ORDER BY column_id
+    ) LOOP
+      DBMS_OUTPUT.PUT_LINE(r.column_name);
+    END LOOP;
+    RETURN;
+  END IF;
+
+  BEGIN
+    EXECUTE IMMEDIATE
+      'UPDATE piva SET ' || p_sloupec || ' = :val WHERE id_piva = :id'
+      USING p_hodnota, p_id;
+  EXCEPTION
+    WHEN OTHERS THEN
+      DBMS_OUTPUT.PUT_LINE(SQLERRM);
+  END;
+END uprav_pivo;
+/
+
+##4##
+
+CREATE OR REPLACE VIEW restaurace_adresy AS
+SELECT r.id_restaurace    AS id,
+       r.nazev            AS restaurace,
+       o.nazev            AS obec,
+       a.cislo_popisne    AS pop_cislo,
+       a.ulice            AS ulice,
+       a.cislo_orientacni AS orientacni_cislo,
+       a.psc              AS psc
+FROM restaurace r
+JOIN adresy a           ON r.id_adresy   = a.id_adresy
+JOIN smerovaci_cisla sc ON a.psc         = sc.psc
+JOIN obce o             ON sc.id_obce    = o.id_obce
+JOIN kraje k            ON o.id_kraje    = k.id_kraje
+WHERE k.nazev = 'Moravskoslezský kraj'
+WITH CHECK OPTION;
+
+##5##
+
+CREATE OR REPLACE TRIGGER trg_restaurace_adresy
+INSTEAD OF INSERT OR UPDATE OR DELETE ON restaurace_adresy
+FOR EACH ROW
+DECLARE
+  v_id_adresy    adresy.id_adresy%TYPE;
+  v_psc_check    smerovaci_cisla.psc%TYPE;
+BEGIN
+  IF INSERTING THEN
+    BEGIN
+      SELECT sc.psc INTO v_psc_check
+      FROM smerovaci_cisla sc
+      JOIN obce o ON sc.id_obce  = o.id_obce
+      JOIN kraje k ON o.id_kraje = k.id_kraje
+      WHERE sc.psc = :NEW.psc
+        AND k.nazev = 'Moravskoslezský kraj'
+        AND ROWNUM = 1;
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        RAISE_APPLICATION_ERROR(-20001,
+          'PSC nepatří do Moravskoslezského kraje nebo neexistuje.');
+    END;
+
+    INSERT INTO adresy (id_adresy, ulice, cislo_orientacni, cislo_popisne, psc)
+    VALUES (p3_adresy_seq.NEXTVAL,
+            :NEW.ulice,
+            :NEW.orientacni_cislo,
+            :NEW.pop_cislo,
+            :NEW.psc)
+    RETURNING id_adresy INTO v_id_adresy;
+
+    INSERT INTO restaurace (id_restaurace, nazev, id_adresy)
+    VALUES (p3_restaurace_seq.NEXTVAL, :NEW.restaurace, v_id_adresy);
+
+  ELSIF UPDATING THEN
+    SELECT r.id_adresy INTO v_id_adresy
+    FROM restaurace r
+    WHERE r.id_restaurace = :OLD.id;
+
+    UPDATE adresy
+    SET ulice            = :NEW.ulice,
+        cislo_orientacni = :NEW.orientacni_cislo,
+        cislo_popisne    = :NEW.pop_cislo,
+        psc              = :NEW.psc
+    WHERE id_adresy = v_id_adresy;
+
+    UPDATE restaurace
+    SET nazev = :NEW.restaurace
+    WHERE id_restaurace = :OLD.id;
+
+  ELSIF DELETING THEN
+    SELECT r.id_adresy INTO v_id_adresy
+    FROM restaurace r
+    WHERE r.id_restaurace = :OLD.id;
+
+    DELETE FROM restaurace WHERE id_restaurace = :OLD.id;
+
+    BEGIN
+      DELETE FROM adresy WHERE id_adresy = v_id_adresy;
+    EXCEPTION
+      WHEN OTHERS THEN NULL;
+    END;
+  END IF;
+END trg_restaurace_adresy;
+/
+
+##6##
+
+CREATE OR REPLACE FUNCTION info_pivovaru(p_id_pivovaru IN NUMBER)
+RETURN VARCHAR2
+AS
+  v_nazev pivovary.nazev%TYPE;
+  v_obec  obce.nazev%TYPE;
+  v_len   NUMBER;
+  v_druhy NUMBER;
+  v_objem NUMBER;
+BEGIN
+  SELECT piv.nazev, o.nazev
+  INTO v_nazev, v_obec
+  FROM pivovary piv
+  JOIN adresy a           ON piv.id_adresy = a.id_adresy
+  JOIN smerovaci_cisla sc ON a.psc         = sc.psc
+  JOIN obce o             ON sc.id_obce    = o.id_obce
+  WHERE piv.id_pivovaru = p_id_pivovaru;
+
+  v_len := LENGTH(v_nazev);
+
+  IF v_len <= 6 THEN
+    RETURN v_nazev || ';' || v_obec || '.';
+
+  ELSIF v_len <= 10 THEN
+    SELECT COUNT(DISTINCT p.id_druhu_piva) INTO v_druhy
+    FROM piva p
+    WHERE p.id_pivovaru = p_id_pivovaru;
+    RETURN v_nazev || ';' || v_obec || ';' || v_druhy || '.';
+
+  ELSE
+    SELECT NVL(SUM(v.pocet_kusu * t.objem_v_litrech), 0) INTO v_objem
+    FROM vystav v
+    JOIN piva p       ON v.id_piva        = p.id_piva
+    JOIN typy_obalu t ON v.id_typu_obalu  = t.id_typu_obalu
+    WHERE p.id_pivovaru = p_id_pivovaru
+      AND EXTRACT(YEAR FROM v.cas_vystaveni) = EXTRACT(YEAR FROM SYSDATE);
+    RETURN v_nazev || ';' || v_obec || ';' || v_objem || '.';
+  END IF;
+
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    RETURN NULL;
+END info_pivovaru;
+/

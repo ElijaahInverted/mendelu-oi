@@ -1,0 +1,102 @@
+-- ============================================================
+-- Testovaci soubor pro Projekt 3 - PL/SQL (Varianta B)
+-- Spustit vzdy s: SET SERVEROUTPUT ON SIZE UNLIMITED;
+-- ============================================================
+
+SET SERVEROUTPUT ON SIZE UNLIMITED;
+
+-- ==== ##1## pivovary_v_kraji ====
+
+-- Test: existujici kraj
+EXEC pivovary_v_kraji('Jihomoravský kraj');
+
+-- Test: neexistujici kraj (nulovy vystup - procedura jen neprojde smyckou)
+EXEC pivovary_v_kraji('Neexistujici kraj XYZ');
+
+-- ==== ##2## info_restaurace ====
+
+-- Test: platne id restaurace (id=1 by melo existovat)
+EXEC info_restaurace(1);
+
+-- Test: neplatne id (ocekavana hlaska "Restaurace s id -999 nebyla nalezena.")
+EXEC info_restaurace(-999);
+
+-- ==== ##3## uprav_pivo ====
+
+-- Test: neplatne id piva (ocekavana chyba ORA-20002)
+BEGIN
+  uprav_pivo(-1, 'NAZEV', 'Test');
+EXCEPTION
+  WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Chyba: ' || SQLERRM);
+END;
+/
+
+-- Test: neplatny sloupec (ocekavan vypis "Takovýto sloupec neexistuje" + seznam sloupcu)
+EXEC uprav_pivo(1, 'NEEXISTUJE_SLOUPEC', 'hodnota');
+
+-- Test: platna aktualizace nazvu (rollback po kontrole)
+EXEC uprav_pivo(1, 'NAZEV', 'Testovaci pivo');
+SELECT nazev FROM piva WHERE id_piva = 1;
+ROLLBACK;
+SELECT nazev FROM piva WHERE id_piva = 1;
+
+-- Test: pokus o poruseni integritniho omezeni (prazdny nazev - NOT NULL)
+EXEC uprav_pivo(1, 'NAZEV', NULL);
+
+-- ==== ##4## pohled restaurace_adresy ====
+
+-- Test: SELECT z pohledu
+SELECT * FROM restaurace_adresy WHERE ROWNUM <= 5;
+
+-- Test: pocet radku (musi obsahovat jen restaurace z Moravskoslezkeho kraje)
+SELECT COUNT(*) AS pocet_restauraci FROM restaurace_adresy;
+
+-- ==== ##5## trg_restaurace_adresy ====
+
+-- Test INSERT pres pohled (PSC 70200 = Ostrava, Moravskoslezsky kraj)
+INSERT INTO restaurace_adresy(restaurace, obec, pop_cislo, ulice, orientacni_cislo, psc)
+VALUES('Testovaci Hospoda', 'Ostrava', 1, 'Testovaci', '1a', 70200);
+SELECT * FROM restaurace_adresy WHERE restaurace = 'Testovaci Hospoda';
+
+-- Test UPDATE pres pohled
+UPDATE restaurace_adresy
+SET restaurace = 'Preimenovana Hospoda'
+WHERE restaurace = 'Testovaci Hospoda';
+SELECT * FROM restaurace_adresy WHERE restaurace = 'Preimenovana Hospoda';
+
+-- Test DELETE pres pohled
+DELETE FROM restaurace_adresy WHERE restaurace = 'Preimenovana Hospoda';
+SELECT COUNT(*) FROM restaurace_adresy WHERE restaurace = 'Preimenovana Hospoda';
+
+ROLLBACK;
+
+-- Test INSERT s PSC mimo Moravskoslezsky kraj (ocekavana chyba ORA-20001)
+BEGIN
+  INSERT INTO restaurace_adresy(restaurace, obec, pop_cislo, ulice, orientacni_cislo, psc)
+  VALUES('Chybna Hospoda', 'Praha', 1, 'Vaclavske namesti', '1', 11000);
+EXCEPTION
+  WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('Ocekavana chyba: ' || SQLERRM);
+END;
+/
+
+-- ==== ##6## info_pivovaru ====
+
+-- Zobrazit pivovar ID=1 a delku jeho nazvu pro overeni vetve
+SELECT p.id_pivovaru, p.nazev, LENGTH(p.nazev) AS delka
+FROM pivovary p
+ORDER BY id_pivovaru
+FETCH FIRST 10 ROWS ONLY;
+
+-- Test: pivovar s krátkym nazvem (<= 6 znaku)
+-- Najdi ID pivovaru s krátkym nazvem:
+SELECT id_pivovaru, nazev, LENGTH(nazev) FROM pivovary WHERE LENGTH(nazev) <= 6 AND ROWNUM = 1;
+-- Spust s nalezenim ID (napr. id = X):
+-- SELECT info_pivovaru(X) FROM dual;
+
+-- Test: obecne volani pro prvnich 5 pivovaru
+SELECT p.id_pivovaru, p.nazev, LENGTH(p.nazev) AS delka, info_pivovaru(p.id_pivovaru) AS info
+FROM pivovary p
+WHERE ROWNUM <= 5;
+
+-- Test: neexistujici id (ocekavana hodnota NULL)
+SELECT info_pivovaru(-999) AS vysledek FROM dual;
