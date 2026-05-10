@@ -1,4 +1,4 @@
-# TĀNTU Fusion Atelier — Web Hosting Selection
+# Indo-European Fusion Fashion — Web Hosting Selection
 
 ## Selected Provider: Wedos Internet, a.s.
 
@@ -45,7 +45,7 @@ WooCommerce with a moderate product catalogue (under 100 SKUs) and moderate traf
 
 ## Migration path
 
-If TĀNTU grows to 10 000+ daily visitors or requires dedicated resources (e.g., a custom Node.js API connecting to the e-shop), the natural next step is Wedos's own cloud VPS offering, starting at approximately 350 CZK/month. Staying within the same provider avoids re-pointing DNS and dealing with a new control panel.
+If Indo-European Fusion Fashion grows to 10 000+ daily visitors or requires dedicated resources (e.g., a custom Node.js API connecting to the e-shop), the natural next step is Wedos's own cloud VPS offering, starting at approximately 350 CZK/month. Staying within the same provider avoids re-pointing DNS and dealing with a new control panel.
 
 ---
 
@@ -55,7 +55,7 @@ If TĀNTU grows to 10 000+ daily visitors or requires dedicated resources (e.g.,
 2. Point the domain DNS A record to Wedos nameservers (listed in the client zone after registration)
 3. Use the Wedos client zone one-click WordPress installer
 4. Install WooCommerce plugin from the WordPress plugin directory
-5. Upload the child theme files (see visual-style.md for brand assets)
+5. Upload the child theme files (see visual-style.md for Indo-European Fusion Fashion brand assets)
 6. SSL activates automatically within 24 hours of DNS propagation
 
 Note: the rip.pef.mendelu.cz server is the submission requirement for the academic project. The hosting selection above reflects what a real business would choose for production deployment.

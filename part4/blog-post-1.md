@@ -1,6 +1,6 @@
 # Why block printing is having a moment in European fashion — and why most brands are doing it wrong
 
-*Published 14 March 2025 · By Adéla Kovářová, TĀNTU*
+*Published 14 March 2025 · By Adéla Kovářová, Indo-European Fusion Fashion*
 
 ---
 
@@ -30,7 +30,7 @@ High-street brands have been quick. You can now buy block-print-inspired pieces 
 
 The problem isn't that they exist. The problem is what they do to buyer expectations. A customer who buys a 700 CZK "block print" blouse from Zara, wears it twice, and finds it pilling, is now someone who associates block-print aesthetics with low durability. That's a direct market-education problem for brands that are actually producing genuine hand-printed pieces at a higher price.
 
-We price our Bagru-dyed tops at 2 800–3 400 CZK because that's what the material, the artisan's time, and a viable margin actually require. Explaining that price — not defending it, explaining it — is a significant part of what we do in product pages, in our How It's Made section, and in posts like this one.
+We price our Bagru-dyed tops at 2 800–3 400 CZK because that's what the material, the artisan's time, and a viable margin actually require. Explaining that price — not defending it, explaining it — is a significant part of what Indo-European Fusion Fashion does in product pages, in our How It's Made section, and in posts like this one.
 
 ---
 

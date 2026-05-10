@@ -1,51 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
   <defs>
     <style>
-      .brand-name { font-family: 'Georgia', serif; font-size: 36px; font-weight: 400; letter-spacing: 4px; fill: #1B1F3B; }
-      .brand-sub  { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 300; letter-spacing: 8px; fill: #C0622F; }
+      .brand-name { font-family: Georgia, 'Times New Roman', serif; font-size: 52px; font-weight: bold; font-style: italic; fill: #E8167F; }
+      .brand-sub  { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 28px; font-weight: 400; letter-spacing: 10px; fill: #1A1A1A; }
     </style>
   </defs>
 
-  <!-- Block-print motif: stylised lotus/mandala inside a clean square frame -->
-  <!-- Outer square frame (European geometric) -->
-  <rect x="10" y="10" width="120" height="140" fill="none" stroke="#1B1F3B" stroke-width="2"/>
+  <!-- Shopping bag outline -->
+  <!-- Bag body: trapezoid (wider at top, narrower at bottom) -->
+  <polygon points="130,100 370,100 340,320 160,320" fill="white" stroke="#1A1A1A" stroke-width="5" stroke-linejoin="round"/>
 
-  <!-- Inner decorative border (thin rule, South Asian textile reference) -->
-  <rect x="18" y="18" width="104" height="124" fill="none" stroke="#C0622F" stroke-width="0.8"/>
+  <!-- Bag handles: two curved arcs -->
+  <!-- Left handle -->
+  <path d="M 185,100 Q 185,40 230,40 Q 275,40 275,100" fill="none" stroke="#1A1A1A" stroke-width="5" stroke-linecap="round"/>
+  <!-- Right handle -->
+  <path d="M 225,100 Q 225,50 268,50 Q 310,50 310,100" fill="none" stroke="#1A1A1A" stroke-width="5" stroke-linecap="round"/>
 
-  <!-- Background fill for motif area -->
-  <rect x="19" y="19" width="102" height="122" fill="#F5F0E8"/>
+  <!-- Handle attachment dots -->
+  <circle cx="185" cy="100" r="5" fill="#1A1A1A"/>
+  <circle cx="275" cy="100" r="5" fill="#1A1A1A"/>
+  <circle cx="225" cy="100" r="5" fill="#1A1A1A"/>
+  <circle cx="310" cy="100" r="5" fill="#1A1A1A"/>
 
-  <!-- Central lotus block-print motif (stylised, geometric) -->
-  <!-- Central circle -->
-  <circle cx="70" cy="80" r="18" fill="none" stroke="#1B1F3B" stroke-width="1.5"/>
-  <circle cx="70" cy="80" r="6" fill="#C0622F"/>
+  <!-- Female silhouette (simplified stylised figure) -->
+  <!-- Body -->
+  <ellipse cx="210" cy="150" rx="18" ry="22" fill="#E8167F"/> <!-- head -->
+  <!-- Hair -->
+  <ellipse cx="220" cy="143" rx="14" ry="18" fill="#E8167F"/>
+  <!-- Torso -->
+  <path d="M 196,170 Q 190,220 188,260 L 232,260 Q 230,220 224,170 Z" fill="#E8167F"/>
+  <!-- Left arm (reaching down, holding bag) -->
+  <path d="M 196,185 Q 168,220 162,255" fill="none" stroke="#E8167F" stroke-width="12" stroke-linecap="round"/>
+  <!-- Right arm (raised, holding small bags) -->
+  <path d="M 224,180 Q 248,160 260,148" fill="none" stroke="#E8167F" stroke-width="12" stroke-linecap="round"/>
+  <!-- Left leg (back, straight) -->
+  <path d="M 200,258 Q 192,295 188,340" fill="none" stroke="#E8167F" stroke-width="14" stroke-linecap="round"/>
+  <!-- Right leg (front, bent at knee, heel raised) -->
+  <path d="M 222,258 Q 228,290 224,315 Q 222,330 215,340" fill="none" stroke="#E8167F" stroke-width="14" stroke-linecap="round"/>
+  <!-- Left foot / heel -->
+  <path d="M 188,340 Q 178,345 172,342" fill="none" stroke="#E8167F" stroke-width="8" stroke-linecap="round"/>
+  <!-- Right foot / heel (raised) -->
+  <path d="M 215,340 Q 208,348 202,346" fill="none" stroke="#E8167F" stroke-width="8" stroke-linecap="round"/>
 
-  <!-- 8 petals arranged around centre -->
-  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(0 70 80)"/>
-  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(45 70 80)"/>
-  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(90 70 80)"/>
-  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(135 70 80)"/>
-  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(180 70 80)"/>
-  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(225 70 80)"/>
-  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(270 70 80)"/>
-  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(315 70 80)"/>
+  <!-- Small shopping bags in right hand -->
+  <rect x="255" y="148" width="22" height="28" rx="2" fill="#E8167F"/>
+  <path d="M 260,148 Q 260,138 266,138 Q 272,138 272,148" fill="none" stroke="#E8167F" stroke-width="3"/>
+  <rect x="272" y="155" width="20" height="25" rx="2" fill="#E8167F"/>
+  <path d="M 276,155 Q 276,146 282,146 Q 288,146 288,155" fill="none" stroke="#E8167F" stroke-width="3"/>
 
-  <!-- Corner block-print dots (textile detail) -->
-  <circle cx="30" cy="30" r="3" fill="#C0622F"/>
-  <circle cx="110" cy="30" r="3" fill="#C0622F"/>
-  <circle cx="30" cy="130" r="3" fill="#C0622F"/>
-  <circle cx="110" cy="130" r="3" fill="#C0622F"/>
+  <!-- Large shopping bag in left hand -->
+  <rect x="135" y="255" width="44" height="55" rx="3" fill="#E8167F"/>
+  <path d="M 143,255 Q 143,238 157,238 Q 171,238 171,255" fill="none" stroke="#E8167F" stroke-width="4"/>
 
-  <!-- Horizontal rule lines top and bottom of motif (woven stripe reference) -->
-  <line x1="22" y1="44" x2="118" y2="44" stroke="#1B1F3B" stroke-width="0.6"/>
-  <line x1="22" y1="116" x2="118" y2="116" stroke="#1B1F3B" stroke-width="0.6"/>
-
-  <!-- Brand name to the right of the emblem -->
-  <text x="148" y="78" class="brand-name">TĀNTU</text>
-  <!-- Subtitle -->
-  <text x="150" y="100" class="brand-sub">FUSION ATELIER</text>
-
-  <!-- Thin horizontal rule under wordmark -->
-  <line x1="148" y1="108" x2="390" y2="108" stroke="#C0622F" stroke-width="0.8"/>
+  <!-- Wordmark -->
+  <text x="340" y="195" class="brand-name">Indo-European</text>
+  <text x="348" y="245" class="brand-sub">FUSION FASHION</text>
 </svg>

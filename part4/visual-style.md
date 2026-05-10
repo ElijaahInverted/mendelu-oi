@@ -1,20 +1,22 @@
-# TĀNTU Fusion Atelier — Visual Style Guide
+# Indo-European Fusion Fashion — Visual Style Guide
 
 ## Brand Name
 
-**TĀNTU** comes from the Sanskrit word for thread or woven fabric. It also sits close enough to the Italian *tanto* (so much, greatly) that European customers read warmth into it without needing to know the etymology. That dual resonance is intentional — one word that carries both sides of the brand's identity.
+**Indo-European Fusion Fashion** — the name states exactly what the brand does. There's no invented word, no abbreviation, no linguistic ambiguity. For a brand entering a market where customers are unfamiliar with it, that directness is an asset. The name is long, but "Indo-European" as a compound is familiar to Central European ears (it's a standard linguistic and cultural term), and "Fusion Fashion" anchors the commercial activity immediately.
 
 ---
 
 ## Logo
 
-The logo pairs two elements: a block-print emblem on the left and a wordmark on the right.
+The logo has three elements: a shopping bag outline, a female silhouette, and a wordmark.
 
-The emblem is an eight-petal lotus rendered in the flat, repeat-print style of Rajasthani block printing. It sits inside a strict square frame with a thin inner border rule. The contrast between the organic motif and the geometric container is the whole idea — South Asian craft vocabulary held inside a European graphic discipline. The corner dots echo the register marks that woodblock printers leave at the edges of a stamp, so anyone who knows the craft will recognise them. Anyone who doesn't will read them as clean decorative detail.
+The shopping bag is drawn in clean black line, no fill. It identifies the brand as a retail fashion business at a glance. The outline style keeps it light — a filled bag would compete with the silhouette.
 
-The wordmark uses a geometric serif at generous letter-spacing. No bold, no italics. The subtitle "FUSION ATELIER" sits below in a lightweight grotesque, all caps, very wide tracking. That weight contrast between the serif name and the sans subtitle keeps the mark from feeling too heavy or too light on either end.
+The female silhouette is rendered in solid hot pink/magenta. She's mid-stride, carrying shopping bags in both hands — one large bag, two smaller ones. The pose is energetic and suggests confidence. The figure overlaps the bag outline, which places her in front of the brand's commercial identity rather than inside it. She is the customer, not the product.
 
-**Why this logo:** Block printing is the oldest form of textile printing still in commercial use in Rajasthan. Centring the brand mark on a print-maker's tool grounds the brand in actual craft process rather than vague "global inspiration." The square frame signals precision and deliberate design — two things European customers associate with quality.
+The wordmark sits to the right. "Indo-European" is set in an italic serif at roughly twice the size of the subtitle. The italic adds motion and personality; the serif signals quality and a non-corporate character. "FUSION FASHION" is set in a spaced uppercase grotesque — calm, structured, and a deliberate contrast to the italic above it. The two type styles mirror the brand's dual identity: South Asian warmth and European discipline.
+
+**Why this logo:** Fashion retail logos fall into two traps — either too abstract (a symbol that requires explanation) or too literal (a dress, a mannequin). This logo avoids both. The bag is a universally understood shopping signifier. The figure gives it personality and a clear target customer. The type gives it the brand name. Nothing is redundant; nothing is missing.
 
 ---
 
@@ -22,47 +24,43 @@ The wordmark uses a geometric serif at generous letter-spacing. No bold, no ital
 
 | Name | Hex | Usage |
 |---|---|---|
-| Indigo Night | `#1B1F3B` | Primary text, logo frame, headings |
-| Terracotta | `#C0622F` | Accent, CTA buttons, price tags, highlights |
-| Linen | `#F5F0E8` | Page background, card backgrounds |
-| Warm Ash | `#8C8070` | Secondary text, captions, borders |
-| Chalk | `#FAFAF7` | Navigation background, overlays |
+| Fusion Pink | `#E8167F` | Primary — silhouette, "Indo-European" wordmark, CTA buttons, price tags, highlights |
+| Charcoal | `#1A1A1A` | Secondary — "FUSION FASHION" text, bag outline, body copy, borders |
+| White | `#FFFFFF` | Background, bag fill, card backgrounds |
+| Soft Rose | `#F7C5DF` | Hover states, section backgrounds, secondary fills |
+| Light Grey | `#F2F2F2` | Footer background, dividers, input field backgrounds |
 
-**Why these colours:** Indigo and terracotta are the two dye colours most associated with traditional Indian hand-printing — indigo from the *nila* plant, terracotta from iron-oxide earth pigments. Both colours also sit comfortably in contemporary European interior and fashion design, so they read as sophisticated rather than folksy. Linen as the background colour avoids the clinical whiteness of most fashion e-shops and gives every page a material, textile-like quality without actually using a texture.
+**Why these colours:** The pink (#E8167F) is the logo's defining colour — bright, feminine, and immediately distinguishable on a white background. It's not a soft blush; it's a confident magenta. In the fashion retail context, this colour reads as modern and energetic without being aggressive. Charcoal rather than pure black (#000000) softens the contrast slightly and makes body text more comfortable to read at length. White keeps the overall impression clean and lets the products (which will be photographed on light backgrounds) take centre stage.
 
 ---
 
 ## Typography
 
-### Display / Headings
-**Cormorant Garamond** (Regular, 400 weight)
-- A geometric serif with long, fine strokes
-- Carries the quality signal of traditional fashion typography without looking like a luxury-goods cliché
-- Use at 32px and above only — below that size it loses its character
+### Display / Brand
+**Georgia** (Bold Italic) — for the "Indo-European" portion of the logo wordmark and for pull quotes on the site. A system serif that's available everywhere, reads elegantly at large sizes, and carries the same warmth as the italic logo treatment.
 
-### Body / UI
-**DM Sans** (Regular 400, Medium 500)
-- Clean, neutral grotesque with slightly humanist details
-- Reads well at 14–16px on screen
-- The soft terminals stop it from feeling cold next to Cormorant
+### Navigation & Subheadings
+**Montserrat** (SemiBold 600, all caps, tracked) — for "FUSION FASHION" wordmark style, navigation items, category labels, and page subheadings. Wide letter spacing at small sizes.
+
+### Body
+**Open Sans** (Regular 400, Medium 500) — for product descriptions, blog posts, policy pages. Neutral, highly legible, comfortable at 15–16px.
 
 ### Sizing scale
-| Role | Size | Weight |
+| Role | Size | Font |
 |---|---|---|
-| Page title (H1) | 48px | Cormorant 400 |
-| Section heading (H2) | 32px | Cormorant 400 |
-| Sub-heading (H3) | 20px | DM Sans 500 |
-| Body | 16px | DM Sans 400 |
-| Caption / label | 12px | DM Sans 400, tracked +0.08em |
-
-### Letter spacing
-All headings in Cormorant: +0.06em. Caps labels and navigation items: +0.12em. Body text: default.
+| Page title (H1) | 44px | Georgia Bold Italic |
+| Section heading (H2) | 28px | Montserrat SemiBold, tracked |
+| Sub-heading (H3) | 18px | Montserrat SemiBold |
+| Body | 16px | Open Sans Regular |
+| Caption / label | 12px | Open Sans Regular, tracked +0.06em |
 
 ---
 
 ## Graphic Language
 
-- Thin single-rule borders, 1px, in Warm Ash or Terracotta — never thick strokes
-- Block-print pattern (from the logo motif) used sparingly as section dividers or background watermarks at 8% opacity
-- Product photography: neutral linen or white surface, natural side-lighting, no lifestyle shots with models in staged settings — the fabric is the subject
-- No gradients. No drop shadows. No decorative fonts other than Cormorant.
+- Logo always appears on white or very light background — never on a coloured field
+- The pink is used as an accent, not a background; pages should not be predominantly pink
+- Product photography: white or light grey background, soft natural lighting
+- No gradients. The pink is flat and solid throughout.
+- Icon style: thin line icons in Charcoal (#1A1A1A), 1.5px stroke
+- Button style: Fusion Pink fill (#E8167F), white text, Montserrat SemiBold, no border radius or very slight (4px)

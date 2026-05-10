@@ -1,6 +1,6 @@
 # One jacket, five occasions: how modular dressing actually works
 
-*Published 2 April 2025 · By Tereza Blahová, TĀNTU*
+*Published 2 April 2025 · By Tereza Blahová, Indo-European Fusion Fashion*
 
 ---
 
@@ -54,6 +54,6 @@ Verdict: it worked. I'd wear it there again with the wrap closed and something s
 
 Modular or multistyle clothing is a real category, not a marketing phrase, but only when the garment has genuine structural flexibility — fabric that drapes differently depending on how you hold it, a fastening system that adjusts across a range, a print that reads differently against different backgrounds.
 
-The Indigo Wrap Jacket does those things. Not every TĀNTU piece does — some are just well-made regular garments, and that's fine too. But the wrap pieces in particular are worth trying if you travel regularly and pack light or if you genuinely want one thing that covers more than one situation.
+The Indigo Wrap Jacket does those things. Not every Indo-European Fusion Fashion piece does — some are just well-made regular garments, and that's fine too. But the wrap pieces in particular are worth trying if you travel regularly and pack light or if you genuinely want one thing that covers more than one situation.
 
 Three months in, I haven't found the occasion where it doesn't work. I'm still looking.

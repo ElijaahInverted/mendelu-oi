@@ -1,4 +1,4 @@
-# TĀNTU Fusion Atelier — Customer Personas
+# Indo-European Fusion Fashion — Customer Personas
 
 ---
 
@@ -16,9 +16,9 @@ Klára has been buying clothes the same way for five years: she saves up, buys t
 
 She travels four or five times a year for work and personal trips: Berlin for a design conference, Lisbon for a long weekend, Tbilisi because a friend moved there. She packs light and needs clothes that work in a meeting and at dinner without a change. That's harder than it sounds.
 
-### What she wants from TĀNTU
+### What she wants from Indo-European Fusion Fashion
 
-She found the brand through an Instagram post from a Prague-based stylist she follows. What caught her attention wasn't the photo — it was the caption that mentioned the artisan workshop in Jaipur by name and linked to a video of the printing process. That kind of specificity is rare. She's tired of brands saying "ethically made" with no follow-through.
+She found Indo-European Fusion Fashion through an Instagram post from a Prague-based stylist she follows. What caught her attention wasn't the photo — it was the caption that mentioned the artisan workshop in Jaipur by name and linked to a video of the printing process. That kind of specificity is rare. She's tired of brands saying "ethically made" with no follow-through.
 
 She's interested in the Indigo Wrap Jacket (page 3 of the catalogue). She'll read the full product page, check the fabric composition, look at the care instructions, and probably read the "How It's Made" page before buying.
 
@@ -46,9 +46,9 @@ She's interested in the Indigo Wrap Jacket (page 3 of the catalogue). She'll rea
 
 Martin buys clothes for himself maybe twice a year and never particularly enjoys it. He knows what he likes when he sees it — clean cuts, nothing with a logo on the front — but he doesn't follow fashion and wouldn't describe himself as interested in it.
 
-He found TĀNTU while looking for a birthday gift for his girlfriend, Tereza. She mentioned she likes "Indian-style prints" but also "nothing too ethnic-costume-y." That's a specific brief. He googled around for 20 minutes and landed on the TĀNTU site through a Czech gift guide article.
+He found Indo-European Fusion Fashion while looking for a birthday gift for his girlfriend, Tereza. She mentioned she likes "Indian-style prints" but also "nothing too ethnic-costume-y." That's a specific brief. He googled around for 20 minutes and landed on the site through a Czech gift guide article.
 
-### What he wants from TĀNTU
+### What he wants from Indo-European Fusion Fashion
 
 He wants to buy something, be confident it's the right thing, and not overthink it. The gift guide said the scarves start at 890 CZK. That's in his range. He'll navigate to the Accessories page, filter by price, and read one or two product descriptions. If there's a size guide with actual centimetre measurements he'll use it.
 

@@ -1,4 +1,4 @@
-# TĀNTU Fusion Atelier — Product Catalogue
+# Indo-European Fusion Fashion — Product Catalogue
 
 All prices in CZK. All pieces are small-batch; stock listed is current as of SS2025 collection.
 
@@ -20,7 +20,7 @@ Wash at 30°C, inside out, away from direct sunlight when drying. Indigo fades g
 **Available stock:** 12 units  
 **Variants:** None — one print, one colourway, one size  
 
-**Care tag copy:** Natural indigo · Bagru workshop, Rajasthan · Block-printed by hand · QR code links to artisan profile
+**Care tag copy:** Natural indigo · Bagru workshop, Rajasthan · Block-printed by hand · QR code links to artisan profile · Indo-European Fusion Fashion
 
 ---
 

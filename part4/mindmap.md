@@ -1,7 +1,7 @@
-# TĀNTU Fusion Atelier — Site Structure Mindmap
+# Indo-European Fusion Fashion — Site Structure Mindmap
 
 ```
-TĀNTU Website (Home)
+Indo-European Fusion Fashion Website (Home)
 │
 ├── Shop
 │   ├── All Products
@@ -70,3 +70,7 @@ TĀNTU Website (Home)
 
 - **Persona 1 — Klára, 31, Prague** — design professional, shops for statement pieces that travel well, values transparency of production
 - **Persona 2 — Martin, 27, Brno** — buys gifts for his partner, attracted by the craft story, does most research on mobile
+
+---
+
+*Brand: Indo-European Fusion Fashion*

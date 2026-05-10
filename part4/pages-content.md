@@ -1,4 +1,4 @@
-# TĀNTU Fusion Atelier — Page Content
+# Indo-European Fusion Fashion — Page Content
 
 Content for all 17 site pages. Paste into the WordPress page editor (Text/HTML view or Gutenberg blocks as appropriate).
 
@@ -12,7 +12,7 @@ Content for all 17 site pages. Paste into the WordPress page editor (Text/HTML v
 
 **Intro paragraph**
 
-We make clothing at the point where South Asian block printing meets European cut. That means working with a woodblock workshop in Bagru, Jaipur — a family business that has been printing the same patterns since the 1960s — and turning their fabric into pieces that work in Prague, Vienna, and Warsaw. Not costume. Not "global inspiration." Actual clothes, made carefully.
+Indo-European Fusion Fashion makes clothing at the point where South Asian block printing meets European cut. That means working with a woodblock workshop in Bagru, Jaipur — a family business that has been printing the same patterns since the 1960s — and turning their fabric into pieces that work in Prague, Vienna, and Warsaw. Not costume. Not "global inspiration." Actual clothes, made carefully.
 
 **Feature blocks (3 columns)**
 
@@ -98,7 +98,7 @@ Six pieces. Two jackets, one blouse, one pair of trousers, one skirt, one scarf.
 
 **Page title:** Archive
 
-**Intro:** Previous TĀNTU collections. These pieces are sold out and not available for reorder.
+**Intro:** Previous Indo-European Fusion Fashion collections. These pieces are sold out and not available for reorder.
 
 **AW2024 — "Kantha Winter":** Four quilted pieces in natural white and black block-print. All sold out within six weeks of launch. The Kantha technique from this collection carried forward into TAN-JKT-005 in SS2025.
 
@@ -136,7 +136,7 @@ Shyam has been printing at his family's workshop since he was 14. He's now 41. H
 
 He works six days a week, roughly six hours of printing per day. The rest of the time goes to block maintenance, fabric preparation, and training two apprentices from the neighbouring village.
 
-We pay 35% above the local market rate for printed fabric because Shyam's quality control is better than the other workshops we visited in Bagru and Sanganer. This is a business decision, not a charity decision.
+Indo-European Fusion Fashion pays 35% above the local market rate for printed fabric because Shyam's quality control is better than the other workshops we visited in Bagru and Sanganer. This is a business decision, not a charity decision.
 
 **Priya Sharma — Quality Control, Jaipur**
 
@@ -182,7 +182,7 @@ She inspects every piece before it ships from Jaipur.
 
 **Page title:** Our Story
 
-TĀNTU started in 2023 with one question: why is it so hard to find clothing that takes South Asian craft seriously without turning it into a costume?
+Indo-European Fusion Fashion started in 2023 with one question: why is it so hard to find clothing that takes South Asian craft seriously without turning it into a costume?
 
 The founders — two students at Mendel University in Brno with a shared background in design and economics — spent a semester studying Indo-European trade history and came out of it convinced that the interesting territory was not in "fusion food" or "fusion music" but in fabric. Specifically in the gap between what Rajasthani block printers actually produce and what ends up on the racks of European stores as "ethnic-inspired."
 
@@ -209,8 +209,8 @@ Response time: 1–2 business days.
 - Message (required, minimum 20 characters)
 - [Submit button — "Send message"]
 
-**Email:** hello@tantu-atelier.cz *(fictional)*  
-**Instagram:** @tantu.atelier *(fictional)*
+**Email:** hello@indo-european-fusion.cz *(fictional)*  
+**Instagram:** @indoeuropeanfusion *(fictional)*
 
 We don't have a phone number. Email is the fastest way to reach us.
 
@@ -222,7 +222,7 @@ We don't have a phone number. Email is the fastest way to reach us.
 
 Cart page title: Your cart
 
-Note for WordPress setup: Use the WooCommerce [woocommerce_cart] shortcode or the default WooCommerce cart block. Apply brand fonts and colours via the child theme stylesheet.
+Note for WordPress setup: Use the WooCommerce [woocommerce_cart] shortcode or the default WooCommerce cart block. Apply brand fonts and colours (Fusion Pink #E8167F, Charcoal #1A1A1A) via the child theme stylesheet.
 
 ---
 
