@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 160" width="400" height="160">
+  <defs>
+    <style>
+      .brand-name { font-family: 'Georgia', serif; font-size: 36px; font-weight: 400; letter-spacing: 4px; fill: #1B1F3B; }
+      .brand-sub  { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 300; letter-spacing: 8px; fill: #C0622F; }
+    </style>
+  </defs>
+
+  <!-- Block-print motif: stylised lotus/mandala inside a clean square frame -->
+  <!-- Outer square frame (European geometric) -->
+  <rect x="10" y="10" width="120" height="140" fill="none" stroke="#1B1F3B" stroke-width="2"/>
+
+  <!-- Inner decorative border (thin rule, South Asian textile reference) -->
+  <rect x="18" y="18" width="104" height="124" fill="none" stroke="#C0622F" stroke-width="0.8"/>
+
+  <!-- Background fill for motif area -->
+  <rect x="19" y="19" width="102" height="122" fill="#F5F0E8"/>
+
+  <!-- Central lotus block-print motif (stylised, geometric) -->
+  <!-- Central circle -->
+  <circle cx="70" cy="80" r="18" fill="none" stroke="#1B1F3B" stroke-width="1.5"/>
+  <circle cx="70" cy="80" r="6" fill="#C0622F"/>
+
+  <!-- 8 petals arranged around centre -->
+  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(0 70 80)"/>
+  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(45 70 80)"/>
+  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(90 70 80)"/>
+  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(135 70 80)"/>
+  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(180 70 80)"/>
+  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(225 70 80)"/>
+  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(270 70 80)"/>
+  <ellipse cx="70" cy="56" rx="5" ry="10" fill="#1B1F3B" transform="rotate(315 70 80)"/>
+
+  <!-- Corner block-print dots (textile detail) -->
+  <circle cx="30" cy="30" r="3" fill="#C0622F"/>
+  <circle cx="110" cy="30" r="3" fill="#C0622F"/>
+  <circle cx="30" cy="130" r="3" fill="#C0622F"/>
+  <circle cx="110" cy="130" r="3" fill="#C0622F"/>
+
+  <!-- Horizontal rule lines top and bottom of motif (woven stripe reference) -->
+  <line x1="22" y1="44" x2="118" y2="44" stroke="#1B1F3B" stroke-width="0.6"/>
+  <line x1="22" y1="116" x2="118" y2="116" stroke="#1B1F3B" stroke-width="0.6"/>
+
+  <!-- Brand name to the right of the emblem -->
+  <text x="148" y="78" class="brand-name">TĀNTU</text>
+  <!-- Subtitle -->
+  <text x="150" y="100" class="brand-sub">FUSION ATELIER</text>
+
+  <!-- Thin horizontal rule under wordmark -->
+  <line x1="148" y1="108" x2="390" y2="108" stroke="#C0622F" stroke-width="0.8"/>
+</svg>
