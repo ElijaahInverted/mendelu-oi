@@ -1,0 +1,6 @@
+    15	xhajkov0:x:11248:10001:Miroslava Hajkova:/export/home/student/xhajkov0:/bin/bash
+    14	xradikov:x:11167:10001:Karel Radikovsky:/export/home/student/xradikov:/bin/bash
+    13	xhajek:x:11162:10001:Daniel Hajek:/export/home/student/xhajek:/bin/bash
+    12	xhallova:x:11024:10001:Sarka Hallova:/export/home/student/xhallova:/bin/bash
+    11	xhandlir:x:10961:10001:Petr Handlir:/export/home/student/xhandlir:/bin/bash
+    10	xhampl:x:10820:10001:Josef Hampl:/export/home/student/xhampl:/bin/bash
